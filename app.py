@@ -8,7 +8,11 @@ print("PDFKit version:", pdfkit.__version__)
 print("Jinja2 version:", Environment.__module__)
 
 fullpath = os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe'
-st.write(fullpath )
+
+# change file permission to 777
+os.chmod(fullpath, 0777)
+
+# st.write(fullpath )
 
 wkhtmltopdf = fullpath;
 
