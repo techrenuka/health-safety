@@ -7,19 +7,32 @@ print("Streamlit version:", st.__version__)
 print("PDFKit version:", pdfkit.__version__)
 print("Jinja2 version:", Environment.__module__)
 
-fullpath = os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe'
 
-# change file permission to 777
-os.chmod(fullpath, 0o777)
+# wkhtmltopdfDir = os.getcwd() + '/wkhtmltopdf'
+
+# # change file permission to 777
+# for root, dirs, files in os.walk(wkhtmltopdfDir):
+#     os.chmod(root, 0o777)
+#     for d in dirs:
+#         os.chmod(os.path.join(root, d), 0o777)
+#     for f in files:
+#         os.chmod(os.path.join(root, f), 0o777)
+
+
+# fullpath = os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe'
+
 
 # st.write(fullpath )
 
 wkhtmltopdf = fullpath;
-
 print(wkhtmltopdf)
 
-# Configure PDFKit
-config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf)  # Use the executable in the current folder
+try:
+    # Configure PDFKit
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')  # Use the executable in the current folder
+except OSError as e:
+    st.error(f"Error configuring PDFKit: {str(e)}")
+    st.info("Please ensure the wkhtmltopdf executable has proper permissions")
 
 # Set up Jinja environment
 env = Environment(loader=FileSystemLoader('.'))
@@ -30,7 +43,7 @@ st.title("Health and Safety Form Generator")
 
 with st.form("risk_form"):
     # Company Details
-    st.header("Company Information")
+    st.header("Company Informationnn")
     col1, col2 = st.columns(2)
     company_name = col1.text_input("Company Name")
     assessors_name = col1.text_input("Assessor's Name")
