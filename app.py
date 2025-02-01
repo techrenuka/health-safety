@@ -7,7 +7,10 @@ print("Streamlit version:", st.__version__)
 print("PDFKit version:", pdfkit.__version__)
 print("Jinja2 version:", Environment.__module__)
 
-wkhtmltopdf = st.write(os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe' );
+fullpath = os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe'
+st.write(fullpath )
+
+wkhtmltopdf = fullpath;
 
 print(wkhtmltopdf)
 
