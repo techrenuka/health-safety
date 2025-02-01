@@ -10,7 +10,7 @@ print("Jinja2 version:", Environment.__module__)
 fullpath = os.getcwd() + '/wkhtmltopdf/bin/wkhtmltoimage.exe'
 
 # change file permission to 777
-os.chmod(fullpath, 0777)
+os.chmod(fullpath, 0o777)
 
 # st.write(fullpath )
 
