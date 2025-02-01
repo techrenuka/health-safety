@@ -1,0 +1,3 @@
+Streamlit = 1.41.1
+PDFKit = 1.0.0
+Jinja2 = jinja2.environment

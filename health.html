@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  @media print {
+    .page { page-break-before: always; }
+  }
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  table { border-collapse: collapse; margin: 15px 0; }
+  td, th { border: 1px solid #000; padding: 8px; }
+  .header { text-align: center; font-weight: bold; }
+  .underline { border-bottom: 1px solid #000; display: inline-block; min-width: 200px; }
+  .bold { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<div>
+  <h1 class="header" style="text-align: right;">Health and Safety Form</h1>
+  <h1 class="header" style="text-align: right;">Traders Risk Assessment form</h1>
+
+  <table style="width: 100%; margin-top: 20px;">
+    <tr><td style="width: 30%;background-color:#ffbf86;">Company Name:</td><td style="border-bottom: 1px solid #000;">{{ company_name }}</td></tr>
+    <tr><td style="background-color:#ffbf86;">Assessors Name:</td><td style="border-bottom: 1px solid #000;">{{ assessors_name }}</td></tr>
+    <tr><td style="background-color:#ffbf86;">Address:</td><td style="border-bottom: 1px solid #000;">{{ address }}</td></tr>
+    <tr><td style="background-color:#ffbf86;">Stand No:</td><td style="border-bottom: 1px solid #000;">{{ stand_no }}</td></tr>
+    <tr><td style="background-color:#ffbf86;">Date:</td><td style="border-bottom: 1px solid #000;">{{ date }}</td></tr>
+    <tr><td style="background-color:#ffbf86;">Signature:</td><td style="border-bottom: 1px solid #000;">{{ signature }}</td></tr>
+  </table>
+
+  <p style="text-align: justify; margin: 15px 0;">
+    <strong>All exhibitors must complete a risk assessment.</strong> It is important as exhibitors that consideration has been
+    put into work activities that could cause harm to yourself, your employees and members of the public and
+    the measures taken to control and minimize these risks.
+  </p>
+  
+  <p style="text-align: justify; margin: 15px 0;">
+    Please consider not only your stand but other areas you may be working e.g. demonstration areas and
+    workshops and include these in your risk assessment. Please find below <strong>examples of common hazards</strong> to
+    illustrate what is expected.
+  </p>
+
+ <table style="width: 100%;">
+    <tr>
+      <th style="width: 20%;background-color:#ffbf86;">Hazard</th>
+      <th style="width: 15%;background-color:#ffbf86;">Severity*(highlight appropriate rating)</th>
+      <th style="width: 15%;background-color:#ffbf86;">Probability**(highlight appropriate rating)</th>
+      <th style="width: 20%;background-color:#ffbf86;">Persons at Risk</th>
+      <th style="background-color:#ffbf86;">Controls to Minimise Risk</th>
+    </tr>
+    <!-- Example rows -->
+          <tr>
+            <td><b>EXAMPLE;</b> Trailing cables/wires</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Exhibitors, members of the public</td>
+            <td>Tape or cover all wires across stand</td>
+          </tr>
+          
+          <tr>
+            <td>Unsecured carpet</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Exhibitors, members of the public</td>
+            <td>Tape and secure all edges</td>
+          </tr>
+          
+          <tr>
+            <td>Sharps and machinery</td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Exhibitors, members of the public</td>
+            <td>Fitted with suitable guarding to prevent access. Safety storage and usage instructions followed</td>
+          </tr>
+          
+          <tr>
+            <td>Overloading racks</td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Exhibitors, members of the public and contractors</td>
+            <td>Follow manufacturer's guidelines on maximum stock weight loaded onto rack. Ensure secured appropriately</td>
+          </tr>
+          
+          <tr>
+            <td>Hazardous substances e.g. chemical & biological</td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Exhibitors, members of the public</td>
+            <td>Stored, used and disposed of as instructed by manufacturer's guidelines. Protective clothing and equipment supplied</td>
+          </tr>
+          
+          <tr>
+            <td>Working at height e.g. ladders & steps</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Low<br>Medium<br><b>High</b></td>
+            <td>Exhibitors</td>
+            <td>Suitable fit for purpose equipment. Trained personnel operating equipment</td>
+          </tr>
+          
+          <tr>
+            <td>Manual Handling</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Low<br><b>Medium</b><br>High</td>
+            <td>Exhibitors and contractors</td>
+            <td>Manual handling processes and suitably trained personnel.</td>
+          </tr>
+    
+    <!-- Add other example rows similarly -->
+  </table>
+
+</div>
+
+<!-- Page 2 -->
+<div class="page">
+  <p style="text-transform: uppercase; margin: 15px 0; text-align: center;">
+    <strong>Using the example above as a guide please complete the form below in block capitals</strong>
+  </p>
+  
+  <p style="margin: 15px 0; text-align: center; font-size: 15px;">
+    If you feel there are no risks concerning your stand, please write 'no risk'.
+  </p>
+  
+  <p style="margin: 15px 0; text-align: center; font-size: 15px;">
+    {% if hazards|length == 0 %}no risk{% endif %}
+  </p>
+
+  <table style="width: 100%;">
+    <tr>
+      <th style="width: 20%;background-color:#ffbf86;">Hazard</th>
+      <th style="width: 15%;background-color:#ffbf86;">Severity*</th>
+      <th style="width: 15%;background-color:#ffbf86;">Probability**</th>
+      <th style="width: 20%;background-color:#ffbf86;">Persons at Risk</th>
+      <th style="background-color:#ffbf86;">Controls to Minimise Risk</th>
+    </tr>
+    {% for hazard in hazards %}
+    <tr>
+      <td>{{ hazard.hazard }}</td>
+      <td>
+        {% if hazard.severity == 'Low' %}<b>Low</b>{% else %}Low{% endif %}<br>
+        {% if hazard.severity == 'Medium' %}<b>Medium</b>{% else %}Medium{% endif %}<br>
+        {% if hazard.severity == 'High' %}<b>High</b>{% else %}High{% endif %}
+      </td>
+      <td>
+        {% if hazard.probability == 'Low' %}<b>Low</b>{% else %}Low{% endif %}<br>
+        {% if hazard.probability == 'Medium' %}<b>Medium</b>{% else %}Medium{% endif %}<br>
+        {% if hazard.probability == 'High' %}<b>High</b>{% else %}High{% endif %}
+      </td>
+      <td>{{ hazard.persons | join(', ') }}</td>
+      <td>{{ hazard.controls }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p style="margin-top: 20px; font-size: 12px;">
+    *Hazard Severity Rating: Low (possible risk of harm to cause a minor first aid injury), Medium (Serious injury and
+    damage), High (Very serious injury, possibly death)<br>
+    ** Hazard Probability Rating; Low (unlikely to occur) Medium (may occur at some point) High (very likely to occur)
+  </p>
+</div>
+
+<!-- Page 3 -->
+<div class="page">
+  <p>
+    To ensure that we can contact a member of your staff regarding Health and Safety matters, please state
+    the nominated Health and Safety representative for your stand. You should ensure that your on-site team
+    are aware of the nominated individual.
+  </p>
+  
+  <h3>HEALTH AND SAFETY REPRESENTATIVE</h3>
+  
+  <p><b>Name: </b><span class="underline">{{ hs_name }}</span></p>
+  <p><b>Position: </b><span class="underline">{{ hs_position }}</span></p>
+  <p><b>Contact tel. on site and office: </b><span class="underline">{{ hs_contact }}</span></p>
+  <p><i>If we do not hear from you then the company owner will be automatically nominated.</i></p>
+  <p style="margin-top: 30px;">
+    I have carried out and completed a risk assessment for our stand for the build-up and show days using the<br>
+    template enclosed and noted any stand contractor/builders risk assessments to be supplied.
+  </p>
+  <p style="margin-top: 50px;">
+    <b>Signed: </b><span class="underline" style="margin-left: 100px;">{{ final_signature }}</span><br>
+    <b>Print Name: </b><span class="underline" style="margin-left: 70px;">{{ print_name }}</span>
+  </p>
+
+  <p style="margin-top: 30px;">
+    <strong><i>Please ensure you bring a copy of your risk assessment to the exhibition.</i></strong>
+  </p>
+</div>
+
+</body>
+</html>
