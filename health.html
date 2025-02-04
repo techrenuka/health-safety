@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  @media print {
-    .page { page-break-before: always; }
+  /* Add these optimizations to existing CSS */
+  * { box-sizing: border-box; }
+  
+  /* Optimize table styles */
+  table { 
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
   }
+  
+  /* Combine common styles */
+  td, th, .underline { 
+    padding: 8px;
+    border: 1px solid #000;
+  }
+  
+  /* Use CSS variables for repeated colors */
+  :root {
+    --header-bg: #ffbf86;
+    --border-color: #000;
+  }
+  
+  .header-cell {
+    background-color: var(--header-bg);
+  }
+  
+  /* Optimize print styles */
+  @media print {
+    body { margin: 0; }
+    .page { 
+      page-break-before: always;
+      margin: 20px;
+    }
+  }
+  
   body { font-family: Arial, sans-serif; margin: 20px; }
-  table { border-collapse: collapse; margin: 15px 0; }
-  td, th { border: 1px solid #000; padding: 8px; }
   .header { text-align: center; font-weight: bold; }
-  .underline { border-bottom: 1px solid #000; display: inline-block; min-width: 200px; }
   .bold { font-weight: bold; }
 </style>
 </head>
@@ -146,7 +176,7 @@
         {% if hazard.probability == 'Medium' %}<b>Medium</b>{% else %}Medium{% endif %}<br>
         {% if hazard.probability == 'High' %}<b>High</b>{% else %}High{% endif %}
       </td>
-      <td>{{ hazard.persons | join(', ') }}</td>
+      <td>{{ hazard.persons | join('') }}</td>
       <td>{{ hazard.controls }}</td>
     </tr>
     {% endfor %}
