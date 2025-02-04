@@ -3,3 +3,4 @@ Jinja2==3.1.2
 boto3==1.26.137
 streamlit==1.23.0
 openai==1.61.0
+fpdf==1.7.2
