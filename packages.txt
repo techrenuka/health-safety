@@ -1,2 +1,2 @@
 wkhtmltopdf
-zlib
+zlib-dev
