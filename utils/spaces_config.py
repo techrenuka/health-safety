@@ -1,4 +1,5 @@
 import boto3
+import os
 from botocore.client import Config
 
 def get_spaces_client():
@@ -7,11 +8,11 @@ def get_spaces_client():
     """
     # Validate required environment variables
     required_vars = {
-        'DO_SPACES_KEY': "DO00CDNDXNK3QR2HD7MY",
-        'DO_SPACES_SECRET': "E+8VjnUqEtZQS55Buh1hDVOJQFdS7uRbg7FM+4NkBXw",
-        'DO_SPACES_BUCKET': "slateai",
-        'DO_SPACES_REGION': "lon1",
-        'DO_SPACES_ENDPOINT': "https://lon1.digitaloceanspaces.com"
+        'DO_SPACES_KEY': os.getenv("DO_SPACES_KEY"),
+        'DO_SPACES_SECRET': os.getenv("DO_SPACES_SECRET"),
+        'DO_SPACES_BUCKET': os.getenv("DO_SPACES_BUCKET"),
+        'DO_SPACES_REGION': os.getenv("DO_SPACES_REGION"),
+        'DO_SPACES_ENDPOINT': os.getenv("DO_SPACES_ENDPOINT")
     }
     
     missing_vars = [k for k, v in required_vars.items() if not v]

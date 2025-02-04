@@ -4,8 +4,8 @@ from openai import OpenAI
 
 # Initialize client with environment variables (recommended for security)
 client = OpenAI(
-    api_key="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",  # Prefer environment variable
-    organization="org-6hhb2WfXRCwHwf2kYFOxX9V1" # Prefer environment variable
+    api_key=os.getenv("OPENAI_API_KEY"),  # Prefer environment variable
+    organization=os.getenv("OPENAI_ORGANIZATION") # Prefer environment variable
 )
 
 ASSISTANT_ID = "asst_bjxEoHCSfmKqNnt1c7DK1oNr"  # Your assistant ID
