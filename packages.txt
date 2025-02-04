@@ -1,2 +1,3 @@
 wkhtmltopdf
-zlib-dev
+zlib1g-dev 
+libjpeg-dev
