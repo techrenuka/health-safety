@@ -2,4 +2,3 @@ pdfkit==1.0.0
 Jinja2==3.1.2
 boto3==1.26.137
 streamlit==1.23.0
-python-dotenv==1.0.0
