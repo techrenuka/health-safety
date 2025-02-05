@@ -17,11 +17,16 @@ def get_wkhtmltopdf_path():
         for path in paths:
             if os.path.exists(path):
                 return path
-    return 'wkhtmltopdf'  # Linux/Mac default
+    elif os.name == 'posix':  # Linux/Mac
+        return '/usr/bin/wkhtmltopdf'
+    else:
+        return 'wkhtmltopdf'  # Linux/Mac default
+
+
 
 # Configure PDFKit
 try:
-    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf') 
+    config = pdfkit.configuration(wkhtmltopdf=get_wkhtmltopdf_path()) 
 except Exception as e:
     st.error(f"Error configuring wkhtmltopdf: {str(e)}")
     st.info("Please ensure wkhtmltopdf is installed on your system")

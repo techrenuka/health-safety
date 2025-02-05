@@ -24,9 +24,12 @@ with st.form("risk_form"):
         "company_name": st.text_input("Company Name", ""),
         "business_category": st.selectbox("Business Category", 
             ["Construction", "Hospitality", "Retail", "Events"]),
-        "business_activity": st.text_area("Describe Business Activity", "")
+        "business_activity": st.text_area("Describe Business Activity", ""),
+        "hazards": st.text_area("Please Describe Any Potential Hazards That Your Business May Pose At The Event")
     }
     submit_button = st.form_submit_button("Submit")
+
+
 
 if submit_button:
     if not all(form_fields.values()):
