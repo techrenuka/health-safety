@@ -17,8 +17,11 @@ def get_ai_recommendation(data):
             {
                 "role": "user",
                 "content": f"Generate safety risk assessment for {data['business_category']} "
-                           f"in {data['business_activity']}. Respond in JSON format with keys: "
+                           f"in {data['business_activity']} and {data['potential_hazards']}. "
+                           f"Respond in JSON format with keys: "
                            "'risks', 'recommendations'."
+
+
             }
         ])
 

@@ -25,9 +25,10 @@ with st.form("risk_form"):
         "business_category": st.selectbox("Business Category", 
             ["Construction", "Hospitality", "Retail", "Events"]),
         "business_activity": st.text_area("Describe Business Activity", ""),
-        "hazards": st.text_area("Please Describe Any Potential Hazards That Your Business May Pose At The Event")
+        "potential_hazards": st.text_area("Please Describe Any Potential Hazards That Your Business May Pose At The Event")
     }
     submit_button = st.form_submit_button("Submit")
+
 
 
 
@@ -50,10 +51,13 @@ if submit_button:
                             'name': form_fields["name"],
                             'company': form_fields["company_name"],
                             'category': form_fields["business_category"],
-                            'activity': form_fields["business_activity"]
+                            'activity': form_fields["business_activity"],
+                            'potential_hazards': form_fields["potential_hazards"]
+
                         }
                     })
                     st.success("Risk assessment generated successfully! Please proceed to the Review page.")
+
                     st.button("Review Risk Assessment", on_click=st.switch_page("pages/1_Review_and_Edit.py"))
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
