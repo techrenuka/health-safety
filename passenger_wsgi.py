@@ -14,6 +14,8 @@ if os.path.exists(VENV_DIR):
     if os.path.exists(PYTHON_PATH):
         os.environ['PYTHONPATH'] = PYTHON_PATH
 
+		
+
 def application(environ, start_response):
     # Set Streamlit page config
     os.environ['STREAMLIT_SERVER_PORT'] = '8501'
