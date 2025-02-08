@@ -1,5 +1,7 @@
 import os
 import sys
+import streamlit.web.bootstrap as bootstrap
+from streamlit.web.server import Server
 
 # Add your application directory to the Python path
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -12,8 +14,16 @@ if os.path.exists(VENV_DIR):
     if os.path.exists(PYTHON_PATH):
         os.environ['PYTHONPATH'] = PYTHON_PATH
 
-# Import your Streamlit application
-from Home import app
-
-# WSGI application callable
-application = app 
+def application(environ, start_response):
+    # Set Streamlit page config
+    os.environ['STREAMLIT_SERVER_PORT'] = '8501'
+    os.environ['STREAMLIT_SERVER_ADDRESS'] = '0.0.0.0'
+    
+    # Initialize Streamlit
+    bootstrap.run('Home.py', '', [], flag_options={})
+    
+    # Get the Streamlit server instance
+    server = Server.get_current()
+    
+    # Handle the WSGI request
+    return server._wsgi_app(environ, start_response) 
