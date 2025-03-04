@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Generate PDF - Health & Safety Risk Assessment Generator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h2>Step 3: Generate Health and Safety Form</h2>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Company Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Company Name:</strong> {{ assessment.company.name }}</p>
+                                <p><strong>Assessor's Name:</strong> {{ assessment.assessor_name }}</p>
+                                <p><strong>Address:</strong> {{ assessment.company.address }}</p>
+                                <p><strong>Stand Number:</strong> {{ assessment.company.stand_no }}</p>
+                                <p><strong>Date:</strong> {{ assessment.date_created }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Business Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Business Category:</strong> {{ assessment.company.category }}</p>
+                                <p><strong>Business Activity:</strong> {{ assessment.company.activity }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Risk Assessment</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Hazard</th>
+                                        <th>Severity</th>
+                                        <th>Probability</th>
+                                        <th>Persons at Risk</th>
+                                        <th>Controls to Minimise Risk</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for hazard in assessment.hazards.all %}
+                                    <tr>
+                                        <td>{{ hazard.hazard }}</td>
+                                        <td>{{ hazard.severity }}</td>
+                                        <td>{{ hazard.probability }}</td>
+                                        <td>{{ hazard.persons }}</td>
+                                        <td>{{ hazard.controls }}</td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="5" class="text-center">No hazards identified</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Safety Representative Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ safety_rep_form.hs_name|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ safety_rep_form.hs_position|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ safety_rep_form.hs_contact|as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Authorization</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ safety_rep_form.print_name|as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class=" <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">✅ Approve & Generate PDF</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
