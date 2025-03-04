@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Assessment - Health & Safety Risk Assessment Generator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h2>Step 1: Tell us about your business</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Your Information</h4>
+                            {{ assessment_form.assessor_name|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Company Information</h4>
+                            {{ company_form.name|as_crispy_field }}
+                            {{ company_form.category|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            {{ company_form.address|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ company_form.stand_no|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h4>Business Activity</h4>
+                            {{ company_form.activity|as_crispy_field }}
+                            {{ assessment_form.potential_hazards|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Generate Risk Assessment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

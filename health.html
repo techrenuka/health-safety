@@ -176,7 +176,7 @@
         {% if hazard.probability == 'Medium' %}<b>Medium</b>{% else %}Medium{% endif %}<br>
         {% if hazard.probability == 'High' %}<b>High</b>{% else %}High{% endif %}
       </td>
-      <td>{{ hazard.persons | join('') }}</td>
+      <td>{{ hazard.persons }}</td>
       <td>{{ hazard.controls }}</td>
     </tr>
     {% endfor %}

@@ -34,4 +34,4 @@ def get_spaces_client():
         
         return client
     except Exception as e:
-        raise ConnectionError(f"Failed to connect to Digital Ocean Spaces: {str(e)}") 
+        raise ConnectionError(f"Failed to connect to Digital Ocean Spaces: {str(e)}")

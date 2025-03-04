@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Health & Safety Risk Assessment Generator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="card-title mb-4">Welcome to the Health & Safety Risk Assessment Generator</h2>
+                <p class="lead">
+                    This application helps you create professional health and safety risk assessments for your business.
+                    Simply follow the steps to generate a comprehensive risk assessment document.
+                </p>
+                <a href="{% url 'risk_assessment:create_assessment' %}" class="btn btn-primary btn-lg mt-3">
+                    Create New Risk Assessment
+                </a>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>How it works</h3>
+            </div>
+            <div class="card-body">
+                <ol class="list-group list-group-numbered mb-4">
+                    <li class="list-group-item">
+                        <strong>Provide Information</strong>: Tell us about your business and activities
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Review & Edit</strong>: Review AI-generated risk assessments and make any necessary changes
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Generate PDF</strong>: Create a professional PDF document for your records
+                    </li>
+                </ol>
+                
+                <h4>Why use this tool?</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item">
+                        <strong>Save Time</strong>: Generate comprehensive risk assessments in minutes
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Expert Guidance</strong>: AI-powered recommendations based on industry standards
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Customizable</strong>: Edit and refine all aspects of your assessment
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Professional Output</strong>: Generate polished PDF documents ready for submission
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

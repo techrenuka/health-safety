@@ -18,6 +18,9 @@ def generate_pdf(data):
     for measure in data.get("safety_measures", []):
         pdf.multi_cell(0, 10, f"- {measure}")
 
+    # Ensure reports directory exists
+    os.makedirs("reports", exist_ok=True)
+    
     pdf_path = "reports/risk_assessment.pdf"
     pdf.output(pdf_path)
     return pdf_path
