@@ -143,9 +143,9 @@ def generate_pdf(request, assessment_id):
                             if os.path.exists(path):
                                 return path
                     elif os.name == 'posix':  # Linux/Mac
-                        return '/usr/bin/wkhtmltopdf'
+                        return f'{settings.BASE_DIR}/wkhtmltopdf'
                     else:
-                        return 'wkhtmltopdf'  # Linux/Mac default
+                        return f'{settings.BASE_DIR}/wkhtmltopdf'  # Linux/Mac default
                 
                 # Configure PDFKit
                 config = pdfkit.configuration(wkhtmltopdf=get_wkhtmltopdf_path())
@@ -245,7 +245,7 @@ def generate_pdf(request, assessment_id):
                 return redirect('risk_assessment:download_pdf', pdf_id=pdf_file.id)
             
             except Exception as e:
-                messages.error(request, f'Error generating PDF: {str(e)}')
+                messages.error(request, f'Error generating PDF: {str(e)} --> {settings.BASE_DIR}')
                 return redirect('risk_assessment:generate_pdf', assessment_id=assessment.id)
     else:
         safety_rep_form = SafetyRepForm(instance=assessment)

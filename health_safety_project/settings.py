@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-h3$%^&*()_+asdfghjkl;qwertyuiop'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["events.jigagigs.com"]
 
 # Application definition
 INSTALLED_APPS = [
